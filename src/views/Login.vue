@@ -1,14 +1,43 @@
 <template>
   <div>
     <h2>自己分析サイト</h2>
-
     <input type="text" class="name" />
     <input type="text" class="password" />
     <input type="button" value="ログイン" class="login" />
+    <v-btn @click="SignIn">ログイン</v-btn>
   </div>
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+export default {
+  data () {
+    return {
+      emailAddress: 'test@example.com',
+      password: 'Password',
+    }
+  },
+  methods: {
+    SignIn () {
+      try {
+        const auth = getAuth();
+
+        signInWithEmailAndPassword(auth, this.emailAddress, this.password)
+          .then(() => {
+            console.log('ログイン成功')
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }
+}
+</script>
+
+<!-- <script>
 // import axios from "axios";
 // export default {
 //  data(){
@@ -48,4 +77,4 @@
 //   }
 //  }
 // }
-</script>
+</script> -->
