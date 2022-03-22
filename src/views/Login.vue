@@ -1,9 +1,8 @@
 <template>
   <div>
     <h2>自己分析サイト</h2>
-    <input type="text" class="name" />
-    <input type="text" class="password" />
-    <input type="button" value="ログイン" class="login" />
+    <input v-model="Address" placeholder="メールアドレス">
+    <input v-model="passwordss" placeholder="パスワード">
     <v-btn @click="SignIn">ログイン</v-btn>
   </div>
 </template>
@@ -13,8 +12,8 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 export default {
   data () {
     return {
-      emailAddress: 'test@example.com',
-      password: 'Password',
+      Address: '',
+      passwordss: '',
     }
   },
   methods: {
@@ -22,7 +21,7 @@ export default {
       try {
         const auth = getAuth();
 
-        signInWithEmailAndPassword(auth, this.emailAddress, this.password)
+        signInWithEmailAndPassword(auth, this.Address, this.passwordss)
           .then(() => {
             console.log('ログイン成功')
           })
