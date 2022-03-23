@@ -1,14 +1,42 @@
 <template>
   <div>
     <h2>自己分析サイト</h2>
-
-    <input type="text" class="name" />
-    <input type="text" class="password" />
-    <input type="button" value="ログイン" class="login" />
+    <input v-model="Address" placeholder="メールアドレス">
+    <input v-model="passwordss" placeholder="パスワード">
+    <v-btn @click="SignIn">ログイン</v-btn>
   </div>
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+export default {
+  data () {
+    return {
+      Address: '',
+      passwordss: '',
+    }
+  },
+  methods: {
+    SignIn () {
+      try {
+        const auth = getAuth();
+
+        signInWithEmailAndPassword(auth, this.Address, this.passwordss)
+          .then(() => {
+            console.log('ログイン成功')
+          })
+          .catch((error) => {
+            console.error(error)
+          })
+      } catch (e) {
+        console.error(e)
+      }
+    }
+  }
+}
+</script>
+
+<!-- <script>
 // import axios from "axios";
 // export default {
 //  data(){
@@ -48,4 +76,4 @@
 //   }
 //  }
 // }
-</script>
+</script> -->

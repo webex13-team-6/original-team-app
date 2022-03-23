@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+        <p>Hello, Firebase Hosting!</p>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+    
+        <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "<API_KEY>",
+            authDomain: "<PROJECT_ID>.firebaseapp.com",
+            databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
+            storageBucket: "<BUCKET>.appspot.com",
+            messagingSenderId: "<SENDER_ID>",      
+          };
+          firebase.initializeApp(config);
+        </script>
+    
+        <script type="text/javascript">
+                var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    
+                var uiConfig = {
+                  callbacks: {
+                    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                      return true;
+                    },
+                    uiShown: function() {
+                      document.getElementById('loader').style.display = 'none';
+                    }
+                  },
+                  signInFlow: 'popup',
+                  signInSuccessUrl: './success.html',
+                  signInOptions: [
+                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                  ],
+                };
+                ui.start('#firebaseui-auth-container', uiConfig);
+            </script>
+      
+</body>
+</html>
