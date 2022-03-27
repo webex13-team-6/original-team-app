@@ -1,8 +1,7 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-
-import Login from "../views/Login.vue";
-
+import { createRouter, createWebHistory } from "vue-router"
+import Home from "../views/Home.vue"
+import Login from "../views/Login.vue"
+import EventsPost from "../views/EventsPost.vue"
 const routes = [
   {
     path: "/",
@@ -22,12 +21,17 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-  }
-];
+  },
+  {
+    path: "/eventsPost",
+    name: "EventsPost",
+    component: EventsPost,
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-});
+})
 
-export default router;
+export default router
