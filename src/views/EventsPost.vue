@@ -6,46 +6,58 @@
     </button>
     <input
       type="radio"
-      id="like"
+      id="frustration"
       name="choises"
-      value="好き"
+      value="挫折した経験"
       v-model="checkMark"
-      checked
     />
-    <label for="like">好き</label>
+    <label for="frustration">挫折した経験</label>
     <input
       type="radio"
-      id="dislike"
+      id="effort"
       name="choises"
-      value="嫌い"
+      value="頑張った経験"
       v-model="checkMark"
-      checked
     />
-    <label for="dislike">嫌い</label>
+    <label for="effort">頑張った経験</label>
     <input
       type="radio"
-      id="goodAt"
+      id="abandon"
       name="choises"
-      value="得意"
+      value="投げ出した経験"
       v-model="checkMark"
-      checked
     />
-    <label for="goodAt">得意</label>
+    <label for="abandon">投げ出した経験</label>
     <input
       type="radio"
-      id="weakPoint"
+      id="embarrassing"
       name="choises"
-      value="苦手"
+      value="恥ずかしい経験"
       v-model="checkMark"
-      checked
     />
-    <label for="weakPoint">苦手</label>
-
+    <label for="embarrassing">恥ずかしい経験</label>
+    <input
+      type="radio"
+      id="anger"
+      name="choises"
+      value="怒った経験"
+      v-model="checkMark"
+    />
+    <label for="anger">怒った経験</label>
+    <input
+      type="radio"
+      id="cried"
+      name="choises"
+      value="泣いた経験"
+      v-model="checkMark"
+    />
+    <label for="cried">泣いた経験</label>
     <div>
       <p v-for="tweet in tweets" :key="tweet.id">
         {{ tweet.text }} {{ tweet.emotion }}
       </p>
     </div>
+    <div></div>
   </div>
 </template>
 
@@ -64,7 +76,7 @@ export default {
           // text: "こんにちは、ツイートの本文です。",
         },
       ],
-      checkMark: "",
+      checkMark: false,
     }
   },
   methods: {
@@ -88,6 +100,7 @@ export default {
       })
       this.inputText = ""
       this.disableButton()
+      this.checkMark = false
     },
   },
   created() {

@@ -23,7 +23,7 @@ const routes = [
     component: Login,
   },
   {
-    path: "/EventsPost",
+    path: "/eventsPost",
     name: "EventsPost",
     component: EventsPost,
   },
