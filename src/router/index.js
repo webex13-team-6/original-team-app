@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import Home from "../views/Home.vue"
 import Login from "../views/Login.vue"
 import EventsPost from "../views/EventsPost.vue"
+import PieChart from "../views/PieChart.vue"
 const routes = [
   {
     path: "/",
@@ -27,6 +28,11 @@ const routes = [
     name: "EventsPost",
     component: EventsPost,
   },
+  {
+    path: "/piechart",
+    name: "PieChart",
+    component: PieChart,
+  }
 ]
 
 const router = createRouter({
